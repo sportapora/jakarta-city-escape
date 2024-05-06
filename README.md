@@ -18,4 +18,4 @@ Follow our social media
 - [Henry Salim](https://instagram.com/_henryhenn)
 - [Jennifer Jeo](https://instagram.com/jjeo116)
 - [Ben Arief M.](https://instagram.com/benarief)
-- [Maulidya Isnaini](https://instagram.com/benarief)
+- [Maulidya Isnaini](https://instagram.com/futuresus_)
