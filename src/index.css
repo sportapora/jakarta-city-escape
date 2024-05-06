@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     font-family: "Plus Jakarta Sans", sans-serif;
     line-height: 1.5;
@@ -12,4 +16,13 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+
+.animated-underscore {
+    @apply w-0 h-1 mt-1 transition-all ease-in-out duration-300 bg-[#000];
+}
+
+.active-underscore {
+    @apply h-1 mt-1 bg-[#000];
 }
