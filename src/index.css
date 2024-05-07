@@ -26,3 +26,7 @@ html {
 .active-underscore {
     @apply h-1 mt-1 bg-[#000];
 }
+
+.btn-primary {
+    @apply bg-stone-800 hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300;
+}

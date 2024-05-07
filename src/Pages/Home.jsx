@@ -6,25 +6,16 @@ import Dufan from '../assets/dufan.webp'
 import {useEffect, useState} from "react";
 
 export default function Home() {
-    const heroImages = [
-        MonasHero,
-        KotuHero
-    ];
-    const [background, setBackground] = useState(MonasHero)
-
-    // useEffect(() => {
-    //     const changeImage = setInterval(() => {
-    //         let index = Math.floor(Math.random() * heroImages.length);
-    //         setBackground(heroImages[index])
-    //     }, 4000)
-    //     return () => clearInterval(changeImage);
-    // }, [heroImages])
+    window.onload = function () {
+        document.getElementById("hero").classList.remove("opacity-0");
+        document.getElementById("eksplorasi-btn").classList.remove("translate-y-24");
+    }
 
     return (
         <Layout>
             <div
-                className="min-h-screen relative flex flex-col items-center justify-center bg-cover transition-opacity ease-in-out duration-500"
-                style={{backgroundImage: `url(${background})`}} id="hero">
+                className="min-h-screen transition-opacity opacity-0 ease-in-out duration-300 relative flex flex-col items-center justify-center bg-cover transition-opacity ease-in-out duration-500"
+                style={{backgroundImage: `url(${MonasHero})`}} id="hero">
                 <form className="container w-full lg:w-1/2 mx-auto">
                     <label htmlFor="default-search"
                            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -40,17 +31,18 @@ export default function Home() {
                                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="Mau pergi ke mana hari ini?"/>
                         <button type="submit"
-                                className="text-white absolute end-2.5 bottom-2.5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 ">Search
+                                className="text-white absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 ">Search
                         </button>
                     </div>
 
                     <div className="flex justify-center">
                         <a
                             href="#welcome"
-                            className="bg-transparent text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute">Yuk
+                            id="eksplorasi-btn"
+                            className="bg-transparent transition-transform ease-in-out duration-500 translate-y-24 text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute">Yuk
                             eksplorasi <span
                                 className="font-bold">Jakarta</span>!
-                            <span className="text-3xl block">&darr;</span>
+                            <span className="text-3xl block motion-safe:animate-bounce">&darr;</span>
                         </a>
                     </div>
                 </form>
@@ -78,8 +70,8 @@ export default function Home() {
                         <div className="animated-underscore peer-hover:w-24"></div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 mb-10">
-                    <div>
+                <div className="flex flex-col lg:flex-row flex-col-reverse mb-10 order-last lg:order-first">
+                    <div className="w-full lg:w-1/2">
                         <h3 className="text-3xl font-bold">Dunia Fantasi (Dufan)</h3>
                         <p className="tracking-wide mt-4 text-justify">Habis diputusin pacar atau sedang melewati masa
                             sulit? Mungkin Anda bisa mencoba meluapkan emosi dan rasa kesalmu dengan berteriak di tempat
@@ -89,7 +81,7 @@ export default function Home() {
                         <a href="/jelajahi/kota-tua" className="block mt-8 peer text-lg font-bold ">Read more &rarr;</a>
                         <div className="animated-underscore peer-hover:w-24"></div>
                     </div>
-                    <div>
+                    <div className="w-full lg:w-1/2">
                         <div className="flex justify-center lg:justify-end">
                             <img src={Dufan}
                                  className="w-3/4 text-center  mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6"
