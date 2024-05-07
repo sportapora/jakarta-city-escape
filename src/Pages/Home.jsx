@@ -1,15 +1,21 @@
 import Layout from "../Layout.jsx";
 import MonasHero from '../assets/monas.jpg'
-import KotuHero from '../assets/kotu-hero.jpg'
-import Kotu from '../assets/kotu.jpg'
-import Dufan from '../assets/dufan.webp'
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 export default function Home() {
     window.onload = function () {
         document.getElementById("hero").classList.remove("opacity-0");
         document.getElementById("eksplorasi-btn").classList.remove("translate-y-24");
     }
+
+    const [destinations, setDestinations] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/jakartacityescape/api/getDestinationsForHomepage").then((response) => {
+            setDestinations(response.data.data)
+        })
+    }, [])
 
     return (
         <Layout>
@@ -53,42 +59,46 @@ export default function Home() {
                     excitement story!
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 lg:mt-16 mb-20">
-                    <div className="flex justify-center lg:justify-start">
-                        <img src={Kotu}
-                             className="w-3/4 text-center  mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 -rotate-6"
-                             alt="Kota Tua"/>
-                    </div>
-                    <div>
-                        <h3 className="text-3xl font-bold">Kota Tua</h3>
-                        <p className="tracking-wide mt-4 text-justify">Jika anda tidak menyukai tempat wisata yang
-                            berisik dan terlalu kekanak-kanakan, mungkin Anda bisa mencoba ke Kota Tua! Destinasi wisata
-                            ini menyimpan segudang pengetahuan sejarah yang dapat menjadi wawasan baru bagimu.
-                            Gedung-gedung di wilayah tersebut berupa peninggalan bangunan-bangunan tua bergaya kolonial
-                            Belanda yang begitu menawan.</p>
-                        <a href="/jelajahi/kota-tua" className="block mt-8 peer text-lg font-bold ">Read more &rarr;</a>
-                        <div className="animated-underscore peer-hover:w-24"></div>
-                    </div>
-                </div>
-                <div className="flex flex-col lg:flex-row flex-col-reverse mb-10 order-last lg:order-first">
-                    <div className="w-full lg:w-1/2">
-                        <h3 className="text-3xl font-bold">Dunia Fantasi (Dufan)</h3>
-                        <p className="tracking-wide mt-4 text-justify">Habis diputusin pacar atau sedang melewati masa
-                            sulit? Mungkin Anda bisa mencoba meluapkan emosi dan rasa kesalmu dengan berteriak di tempat
-                            ini! Dufan yang merupakan singkatan dari Dunia Fantasi, menyediakan berbagai wahana
-                            permainan yang spektakuler dan menantang.
-                        </p>
-                        <a href="/jelajahi/kota-tua" className="block mt-8 peer text-lg font-bold ">Read more &rarr;</a>
-                        <div className="animated-underscore peer-hover:w-24"></div>
-                    </div>
-                    <div className="w-full lg:w-1/2">
-                        <div className="flex justify-center lg:justify-end">
-                            <img src={Dufan}
-                                 className="w-3/4 text-center  mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6"
-                                 alt="Kota Tua"/>
-                        </div>
-                    </div>
-                </div>
+                {destinations.map((destination, index) => {
+                    if (index == 1) {
+                        return (
+                            <div key={index}
+                                 className="flex flex-col lg:flex-row flex-col-reverse mb-10 order-last lg:order-first">
+                                <div className="w-full lg:w-1/2">
+                                    <h3 className="text-3xl font-bold">{destination.nama}</h3>
+                                    <p className="tracking-wide mt-4 text-justify">{destination.deskripsi}
+                                    </p>
+                                    <a href="/jelajahi/kota-tua" className="block mt-8 peer text-lg font-bold ">Read
+                                        more &rarr;</a>
+                                    <div className="animated-underscore peer-hover:w-24"></div>
+                                </div>
+                                <div className="w-full lg:w-1/2">
+                                    <div className="flex justify-center lg:justify-end">
+                                        <img src={`${destination.image}`}
+                                             className="w-full lg:w-3/4 text-center  mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6"
+                                             alt="Kota Tua"/>
+                                    </div>
+                                </div>
+                            </div>)
+                    } else {
+                        return (
+                            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 mt-20 lg:mt-16 mb-20">
+                                <div className="flex justify-center lg:justify-start">
+                                    <img src={`${destination.image}`}
+                                         className="w-full lg:w-3/4 text-center  mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 -rotate-6"
+                                         alt="Kota Tua"/>
+                                </div>
+                                <div>
+                                    <h3 className="text-3xl font-bold">{destination.nama}</h3>
+                                    <p className="tracking-wide mt-4 text-justify">{destination.deskripsi}</p>
+                                    <a href="/jelajahi/kota-tua" className="block mt-8 peer text-lg font-bold ">Read
+                                        more &rarr;</a>
+                                    <div className="animated-underscore peer-hover:w-24"></div>
+                                </div>
+                            </div>
+                        )
+                    }
+                })}
             </div>
         </Layout>
     )
