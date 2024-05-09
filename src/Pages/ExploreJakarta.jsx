@@ -8,6 +8,8 @@ export default function ExploreJakarta() {
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
+    document.getElementById("dark-layer").classList.remove("opacity-0");
+    document.getElementById("dark-layer").classList.add("opacity-25");
   };
   const [destinations, setDestinations] = useState([]);
   const [search, setSearch] = useState("");
@@ -27,16 +29,18 @@ export default function ExploreJakarta() {
         style={{ backgroundImage: `url(${KotuHero})` }}
         id="hero"
       >
-        <div className="container absolute bottom-1/2 top-1/2 text-right">
+        <div className="container text-right">
           <h1
-            id="hero-title"
             className="hero-title transition-transform ease-in-out duration-500 translate-y-72"
+            id="hero-title"
           >
             Yuk eksplorasi destinasi
             <span className="block">wisata di Jakarta!</span>
           </h1>
         </div>
       </div>
+      <div className="dark-layer opacity-0" id="dark-layer"></div>
+
       <div className="container mt-16">
         <form className="lg:container w-full">
           <label
@@ -48,7 +52,7 @@ export default function ExploreJakarta() {
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 text-gray-500 dark:text-stone-400"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -68,11 +72,23 @@ export default function ExploreJakarta() {
               id="default-search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-800 dark:border-gray-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
               placeholder="Mau pergi ke mana hari ini?"
             />
           </div>
         </form>
+
+        <div className="lg:container w-full mt-6 grid grid-cols-4 gap-4">
+          {destinations.map((destination, index) => (
+            <a
+              href=""
+              key={index}
+              class="bg-gray-200 hover:bg-gray-300 text-stone-800 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full dark:bg-stone-700 dark:text-gray-300 dark:hover:bg-stone-800"
+            >
+              {destination.kategori}
+            </a>
+          ))}
+        </div>
 
         {destinations.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16">
