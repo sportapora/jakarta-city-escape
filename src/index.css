@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-}
-
 :root {
     font-family: "Plus Jakarta Sans", sans-serif;
     line-height: 1.5;
@@ -29,4 +25,8 @@ html {
 
 .btn-primary {
     @apply bg-stone-800 hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300;
+}
+
+.hero-title {
+    @apply text-5xl lg:text-6xl font-extrabold text-gray-100;
 }

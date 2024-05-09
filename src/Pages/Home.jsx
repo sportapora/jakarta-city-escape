@@ -3,8 +3,39 @@ import MonasHero from "../assets/monas.jpg";
 import KotuHero from "../assets/kotu-hero.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default function Home() {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  let images = [MonasHero, KotuHero];
+
+  let container = document.querySelector("#hero"),
+    height = container.offsetHeight,
+    imgs = gsap.utils.toArray(".image"),
+    noImgs = imgs.length,
+    fade = document.querySelector(".fade"),
+    fadedur = 0.5,
+    fadePause = 0.5,
+    next = 3;
+
+  function crossfade() {
+    gsap
+      .timeline()
+      .to(fade, { autoAlpha: 1, duration: fadedur })
+      .set(imgs, { y: "-=" + height })
+      .set(imgs[0], { y: "+=" + height * noImgs }) // the first to the end
+      .to(fade, { autoAlpha: 0, duration: fadedur }, "+=" + fadePause);
+
+    imgs.push(imgs.shift()); // the first (shift) to the end (push) from the array
+
+    // start endless run
+    gsap.delayedCall(next, crossfade);
+  }
+
+  gsap.delayedCall(next, crossfade);
+
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
     document
@@ -20,8 +51,10 @@ export default function Home() {
     }
   };
 
-  const changeOpacity = () => {
+  const scrollToWelcome = (event) => {
+    event.preventDefault();
     document.getElementById("welcome").classList.remove("opacity-0");
+    gsap.to(window, { duration: 1, scrollTo: { y: "#welcome", offsetY: 80 } });
   };
 
   const [destinations, setDestinations] = useState([]);
@@ -38,71 +71,80 @@ export default function Home() {
 
   return (
     <Layout>
-      <div
-        className="min-h-screen transition-opacity opacity-0 ease-in-out duration-300 relative flex flex-col items-center justify-center bg-cover"
-        style={{ backgroundImage: `url(${MonasHero})` }}
-        id="hero"
-      >
-        <form className="container w-full lg:w-1/2 mx-auto">
-          <label
-            htmlFor="default-search"
-            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-          >
-            Search
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
-            <input
-              type="search"
-              id="default-search"
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Mau pergi ke mana hari ini?"
+      <div className="relative h-screen">
+        <div className="h-screen overflow-hidden relative" id="hero">
+          {images.map((image, index) => (
+            <img
+              src={`${image}`}
+              key={index}
+              className="relative object-cover object-center image"
             />
+          ))}
+          <div className="fade"></div>
+        </div>
+        <div className="absolute top-1/2">
+          <form className="container w-full lg:w-1/2 mx-auto">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Mau pergi ke mana hari ini?"
+              />
+              <button
+                type="submit"
+                className="text-white hidden md:block absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
+              >
+                Search
+              </button>
+            </div>
+
             <button
               type="submit"
-              className="text-white hidden md:block absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
+              className="text-white block md:hidden mt-2 w-full end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
             >
               Search
             </button>
+          </form>
+          <div className="flex justify-center">
+            <a
+              href=""
+              id="eksplorasi-btn"
+              onClick={scrollToWelcome}
+              className="bg-transparent transition-transform ease-in-out duration-500 translate-y-24 text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute"
+            >
+              Yuk eksplorasi <span className="font-bold">Jakarta</span>!
+              <span className="text-3xl block motion-safe:animate-bounce">
+                &darr;
+              </span>
+            </a>
           </div>
-
-          <button
-            type="submit"
-            className="text-white block md:hidden mt-2 w-full end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
-          >
-            Search
-          </button>
-        </form>
-        <div className="flex justify-center">
-          <a
-            href="#welcome"
-            id="eksplorasi-btn"
-            onClick={changeOpacity}
-            className="bg-transparent transition-transform ease-in-out duration-500 translate-y-24 text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute"
-          >
-            Yuk eksplorasi <span className="font-bold">Jakarta</span>!
-            <span className="text-3xl block motion-safe:animate-bounce">
-              &darr;
-            </span>
-          </a>
         </div>
       </div>
+
       <div
         className="container mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s]"
         id="welcome"

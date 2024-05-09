@@ -20,7 +20,6 @@ export default function ExploreJakarta() {
       });
   }, []);
 
-
   return (
     <Layout>
       <div
@@ -31,7 +30,7 @@ export default function ExploreJakarta() {
         <div className="container absolute bottom-1/2 top-1/2 text-right">
           <h1
             id="hero-title"
-            className="text-5xl lg:text-6xl font-extrabold transition-transform ease-in-out duration-500 translate-y-72 text-gray-100"
+            className="hero-title transition-transform ease-in-out duration-500 translate-y-72"
           >
             Yuk eksplorasi destinasi
             <span className="block">wisata di Jakarta!</span>
@@ -78,12 +77,19 @@ export default function ExploreJakarta() {
         {destinations.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16">
             {destinations.map((destination) => (
-              <Card
-                key={destination.id}
-                nama={destination.nama}
-                image={destination.image}
-                deskripsi={destination.deskripsi.slice(0, 250)}
-              />
+              <a
+                className="hover:-translate-y-4 group ease-in-out duration-300 transition-transform"
+                href={`/jelajahi/${destination.nama
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
+              >
+                <Card
+                  key={destination.id}
+                  nama={destination.nama}
+                  image={destination.image}
+                  deskripsi={destination.deskripsi.slice(0, 250)}
+                />
+              </a>
             ))}
           </div>
         ) : (

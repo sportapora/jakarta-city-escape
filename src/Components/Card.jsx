@@ -1,7 +1,7 @@
 export default function Card({ nama, deskripsi, image }) {
   return (
     <div className="flex justify-center">
-      <div className="max-w-sm text-stone-800 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-sm text-stone-800 bg-white border border-gray-200 rounded-lg shadow group-hover:shadow-md ease-in-out duration-300 transition-shadow dark:bg-gray-800 dark:border-gray-700">
         <a href={`/jelajahi/${nama.replace(/\s+/g, "-").toLowerCase()}`}>
           <img className="rounded-t-lg" src={image} alt="TMII" />
         </a>

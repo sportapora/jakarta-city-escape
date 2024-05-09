@@ -14,7 +14,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className="w-screen bg-transparent shadow fixed top-0 z-50 transition-all duration-500 font-worksans font-extralight"
+            className="w-screen bg-transparent shadow fixed top-0 z-[99] transition-all duration-500 font-worksans font-extralight"
             id="nav">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-[6rem] py-4">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -47,14 +47,14 @@ export default function Navbar() {
                                className="block py-2 px-3 peer text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Jelajahi
                                 Jakarta di Sini!</a>
                             <div
-                                className={`${href === 'http://localhost:5173/jelajahi' || href === 'http://localhost:5173/jelajahi' ? 'w-44 active-underscore ml-3 lg:ml-0' : 'ml-3 lg:ml-0 animated-underscore peer-hover:w-44'}`}></div>
+                                className={`${href === 'http://localhost:5173/jelajahi' || window.location.href.split("/").pop() ? 'w-44 active-underscore ml-3 lg:ml-0' : 'ml-3 lg:ml-0 animated-underscore peer-hover:w-44'}`}></div>
                         </li>
                         <li>
                             <a href="#"
                                className="block py-2 px-3 text-gray-900 peer rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About
                                 Devs</a>
                             <div
-                                className={`${href === 'http://localhost:5173/about-devs' || href === 'http://localhost:5173/about-devs' ? 'w-12 active-underscore ml-3 lg:ml-0' : 'ml-3 lg:ml-0 animated-underscore peer-hover:w-24'}`}></div>
+                                className={`${href === 'http://localhost:5173/about-devs' ? 'w-12 active-underscore ml-3 lg:ml-0' : 'ml-3 lg:ml-0 animated-underscore peer-hover:w-24'}`}></div>
                         </li>
                     </ul>
                 </div>
