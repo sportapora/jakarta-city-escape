@@ -1,23 +1,26 @@
 export default function Navbar() {
     let href = window.location.href;
-    // let nav = document.getElementById("nav");
-    //
-    // window.onscroll = function() {
-    //     if (window.pageYOffset >= 100) {
-    //         nav.classList.remove("bg-transparent")
-    //         nav.classList.add("bg-gray-50/50")
-    //     }
-    // }
+
+    window.onscroll = function () {
+        let nav = document.getElementById("nav");
+        if (window.pageYOffset >= 75) {
+            nav.classList.remove("bg-transparent")
+            nav.classList.add("bg-gray-100/50")
+        } else {
+            nav.classList.add("bg-transparent")
+            nav.classList.remove("bg-gray-100/50")
+        }
+    }
 
     return (
         <nav
-            className="w-screen bg-stone-50/50 shadow fixed top-0 z-50 transition-all duration-500 font-worksans font-extralight"
+            className="w-screen bg-transparent shadow fixed top-0 z-50 transition-all duration-500 font-worksans font-extralight"
             id="nav">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-[6rem] py-4">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     {/*<img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo"/>*/}
                     <span
-                        className="self-center text-2xl font-extrabold whitespace-nowrap dark:text-white">Jakarta<span
+                        className="self-center tracking-wide text-2xl font-extrabold whitespace-nowrap dark:text-white">Jakarta<span
                         className="font-normal">CityEscape</span></span>
                 </a>
                 <button data-collapse-toggle="navbar-default" type="button"
