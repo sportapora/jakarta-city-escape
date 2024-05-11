@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import Carousel from "../Components/Carousel.jsx";
+// import Carousel from "../Components/Carousel.jsx";
+import { Carousel } from "flowbite-react";
 
 export default function Home() {
   window.onload = function () {
@@ -13,12 +14,8 @@ export default function Home() {
     document
       .getElementById("eksplorasi-btn")
       .classList.remove("translate-y-48");
-    let welcomeElement = document.getElementById("welcome");
-
-    if (window.pageYOffset >= 300) {
-      welcomeElement.classList.remove("opacity-0");
-    }
   };
+
   gsap.registerPlugin(ScrollToPlugin);
   const [destinations, setDestinations] = useState([]);
   const [images, setImages] = useState([]);
@@ -43,6 +40,14 @@ export default function Home() {
       .then((response) => {
         setImages(response.data.data);
       });
+
+    let formOffsetTop = document.getElementById("form").offsetTop;
+    let welcomeElement = document.getElementById("welcome");
+
+    if (window.pageYOffset >= formOffsetTop) {
+      console.log("tes");
+      welcomeElement.classList.remove("opacity-0");
+    }
   }, []);
 
   return (
@@ -51,8 +56,15 @@ export default function Home() {
         className="relative h-screen transition-opacity ease-in-out duration-500"
         id="hero"
       >
-        <Carousel images={images} />
-        <div className="absolute z-[70] flex w-full flex-col items-center justify-center top-1/2">
+        <Carousel slideInterval={3000}>
+          {images.map((image, index) => (
+            <img key={index} src={image} alt="Destination image" />
+          ))}
+        </Carousel>
+        <div
+          id="form"
+          className="absolute z-[70] flex w-full flex-col items-center justify-center top-1/2"
+        >
           <form className="container w-full lg:w-1/2 mx-auto">
             <label
               htmlFor="default-search"
@@ -81,7 +93,7 @@ export default function Home() {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
                 placeholder="Mau pergi ke mana hari ini?"
               />
               <button
@@ -100,7 +112,7 @@ export default function Home() {
             </button>
           </form>
         </div>
-        <div className="absolute flex justify-center w-1/2 left-1/4 z-[70] bottom-5">
+        <div className="absolute flex justify-center w-1/2 left-1/4 z-[60] bottom-5">
           <a
             href=""
             id="eksplorasi-btn"
@@ -113,7 +125,7 @@ export default function Home() {
             </span>
           </a>
         </div>
-        <div className="dark-layer opacity-0" id="dark-layer"></div>
+        {/* <div className="dark-layer opacity-0" id="dark-layer"></div> */}
       </div>
 
       <div

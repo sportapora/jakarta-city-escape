@@ -133,8 +133,7 @@ export default function Navbar() {
               </a>
               <div
                 className={`${
-                  href === "http://localhost:5173/" ||
-                  href === "http://localhost:5173/#welcome"
+                  href === "http://localhost:5173/"
                     ? "w-14 active-underscore ml-3 lg:ml-0"
                     : "ml-3 lg:ml-0 animated-underscore peer-hover:w-14"
                 }`}
