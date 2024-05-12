@@ -33,3 +33,4 @@
 .dark-layer {
   @apply absolute h-screen w-full top-0 z-50 transition-opacity ease-in-out duration-700 bg-gradient-to-t from-zinc-900 to-zinc-50;
 }
+

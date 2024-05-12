@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./Pages/ErrorPage.jsx";
 import ExploreJakarta from "./Pages/ExploreJakarta.jsx";
 import DestinationDetail from "./Pages/DestinationDetail.jsx";
+import AboutDevs from "./Pages/AboutDevs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/jelajahi/:namaDestinasi",
     element: <DestinationDetail />,
+  },
+  {
+    path: "/about-devs",
+    element: <AboutDevs />,
   },
 ]);
 

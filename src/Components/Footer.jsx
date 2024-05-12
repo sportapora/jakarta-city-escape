@@ -19,19 +19,19 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
           <div className="mb-3 flex flex-col items-center lg:items-start">
-            <a href="" className="peer">
+            <a href="/" className="peer">
               Home
             </a>
             <div className="animated-underscore peer-hover:w-12 dark:bg-gray-100"></div>
           </div>
           <div className="mb-3 flex flex-col items-center lg:items-start">
-            <a href="" className="peer">
+            <a href="/jelajahi" className="peer">
               Jelajahi Jakarta di Sini!
             </a>
             <div className="animated-underscore peer-hover:w-40 dark:bg-gray-100"></div>
           </div>
           <div className="mb-3 flex flex-col items-center lg:items-start">
-            <a href="" className="peer">
+            <a href="/about-devs" className="peer">
               About Devs
             </a>
             <div className="animated-underscore peer-hover:w-24 dark:bg-gray-100"></div>

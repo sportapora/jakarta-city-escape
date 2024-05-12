@@ -85,7 +85,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="/about-devs"
                 className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-gray-100"
               >
                 About Devs

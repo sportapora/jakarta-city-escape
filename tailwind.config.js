@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
+    './tailwind.animation.css',
   ],
   theme: {
     extend: {},
@@ -12,6 +13,9 @@ export default {
       padding: "6rem",
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin"),
+    require('./tailwind.plugin.js'),
+  ],
   darkMode: "selector",
 };
