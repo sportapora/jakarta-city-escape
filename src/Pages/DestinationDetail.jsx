@@ -13,6 +13,7 @@ export default function DestinationDetail() {
       .getElementById("destination-desc")
       .classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
+    document.getElementById("map").classList.remove("hidden");
   };
 
   const [destination, setDestination] = useState([]);
@@ -92,11 +93,11 @@ export default function DestinationDetail() {
         <div className="w-full h-[500px]">
           <iframe
             loading="lazy"
-            className="border-0 rounded-md mt-6 w-full h-full"
+            id="map"
+            className="border-0 hidden rounded-md mt-6 w-full h-full"
             allowFullScreen={true}
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM
-          &q=${destination.nama}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM&q=${destination.nama}`}
           />
         </div>
 

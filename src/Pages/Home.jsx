@@ -9,8 +9,6 @@ import { Carousel } from "flowbite-react";
 export default function Home() {
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
-    document.getElementById("dark-layer").classList.remove("opacity-0");
-    document.getElementById("dark-layer").classList.add("opacity-25");
     document
       .getElementById("eksplorasi-btn")
       .classList.remove("translate-y-48");

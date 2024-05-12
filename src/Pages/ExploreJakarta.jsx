@@ -91,15 +91,15 @@ export default function ExploreJakarta() {
           </div>
         </form>
 
-        <div className="lg:container w-full mt-6 grid grid-cols-4 gap-4">
+        <div className="lg:container w-full mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category, index) => (
             <a
               href=""
               onClick={(e) => handleFilter(e, index)}
               key={index}
-              className={`bg-stone-${
-                category === filter ? "500 text-white" : "200"
-              } flex items-center justify-center  hover:bg-stone-600 hover:text-white text-stone-800 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full dark:bg-stone-700 dark:text-gray-300 dark:hover:bg-stone-800`}
+              className={`bg-stone-300 ${
+                category === filter ? "bg-stone-600 text-white" : "200"
+              } flex items-center justify-center hover:bg-stone-600 hover:text-white text-stone-800 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full dark:bg-stone-700 dark:text-gray-300 dark:hover:bg-stone-800`}
             >
               {category}
             </a>
