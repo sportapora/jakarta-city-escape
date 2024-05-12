@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-// import Carousel from "../Components/Carousel.jsx";
-import { Carousel } from "flowbite-react";
+import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
+    document.getElementById("footer").classList.add("hidden");
+    document.getElementById("layout").classList.remove("lg:pb-[30%]");
     document
       .getElementById("eksplorasi-btn")
       .classList.remove("translate-y-48");
@@ -16,12 +17,16 @@ export default function Home() {
 
   gsap.registerPlugin(ScrollToPlugin);
   const [destinations, setDestinations] = useState([]);
-  const [images, setImages] = useState([]);
 
   const scrollToWelcome = (event) => {
     event.preventDefault();
-    document.getElementById("welcome").classList.remove("opacity-0");
-    gsap.to(window, { duration: 1, scrollTo: { y: "#welcome", offsetY: 80 } });
+    document.getElementById("footer").classList.remove("hidden");
+    document.getElementById("layout").classList.add("lg:pb-[30%]");
+    document.getElementById("welcome").classList.remove("opacity-0", "hidden");
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#welcome", offsetY: 80 },
+    });
   };
 
   useEffect(() => {
@@ -32,20 +37,6 @@ export default function Home() {
       .then((response) => {
         setDestinations(response.data.data);
       });
-
-    axios
-      .get("http://localhost:3000/jakartacityescape/api/getCarouselImages")
-      .then((response) => {
-        setImages(response.data.data);
-      });
-
-    let formOffsetTop = document.getElementById("form").offsetTop;
-    let welcomeElement = document.getElementById("welcome");
-
-    if (window.pageYOffset >= formOffsetTop) {
-      console.log("tes");
-      welcomeElement.classList.remove("opacity-0");
-    }
   }, []);
 
   return (
@@ -54,15 +45,8 @@ export default function Home() {
         className="relative h-screen transition-opacity ease-in-out duration-500"
         id="hero"
       >
-        <Carousel slideInterval={3000}>
-          {images.map((image, index) => (
-            <img key={index} src={image} alt="Destination image" />
-          ))}
-        </Carousel>
-        <div
-          id="form"
-          className="absolute z-[70] flex w-full flex-col items-center justify-center top-1/2"
-        >
+        <Carousel />
+        <div className="absolute z-[70] flex w-full flex-col items-center justify-center top-1/2">
           <form className="container w-full lg:w-1/2 mx-auto">
             <label
               htmlFor="default-search"
@@ -123,11 +107,10 @@ export default function Home() {
             </span>
           </a>
         </div>
-        {/* <div className="dark-layer opacity-0" id="dark-layer"></div> */}
       </div>
 
       <div
-        className="container mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s] dark:text-gray-100"
+        className="container hidden mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s] dark:text-gray-100"
         id="welcome"
       >
         <h1 className="text-4xl lg:text-5xl font-bold text-center">

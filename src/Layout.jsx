@@ -3,7 +3,7 @@ import Footer from "./Components/Footer.jsx";
 
 export default function Layout({ children }) {
   return (
-    <div className="lg:pb-[30%] relative bg-stone-100 dark:bg-neutral-900 text-stone-800">
+    <div className="lg:pb-[30%] relative bg-stone-100 dark:bg-neutral-900 text-stone-800" id="layout">
       <Navbar />
       {children}
       <Footer />
