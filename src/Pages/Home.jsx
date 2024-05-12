@@ -10,6 +10,8 @@ export default function Home() {
     document.getElementById("hero").classList.remove("opacity-0");
     document.getElementById("footer").classList.add("hidden");
     document.getElementById("layout").classList.remove("lg:pb-[30%]");
+    document.getElementById("dark-layer").classList.remove("opacity-0");
+    document.getElementById("dark-layer").classList.add("opacity-25");
     document
       .getElementById("eksplorasi-btn")
       .classList.remove("translate-y-48");
@@ -108,6 +110,7 @@ export default function Home() {
           </a>
         </div>
       </div>
+      <div className="dark-layer opacity-0" id="dark-layer"></div>
 
       <div
         className="container hidden mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s] dark:text-gray-100"
