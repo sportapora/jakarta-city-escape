@@ -1,6 +1,6 @@
 import MonasHero from "../assets/monas.jpg";
 import KotuHero from "../assets/kotu-hero.jpg";
-import TMIIHero from "../assets/tmii.jpg";
+import TMIIHero from "../assets/tmii.png";
 
 export default function Carousel() {
   return (
