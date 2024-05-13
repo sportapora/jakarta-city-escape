@@ -6,19 +6,17 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
+  const [destinations, setDestinations] = useState([]);
+
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
     document.getElementById("footer").classList.add("hidden");
     document.getElementById("layout").classList.remove("lg:pb-[30%]");
     document.getElementById("dark-layer").classList.remove("opacity-0");
-    document.getElementById("dark-layer").classList.add("opacity-25");
-    document
-      .getElementById("eksplorasi-btn")
-      .classList.remove("translate-y-48");
+    document.getElementById("dark-layer").classList.add("opacity-75");
   };
 
   gsap.registerPlugin(ScrollToPlugin);
-  const [destinations, setDestinations] = useState([]);
 
   const scrollToWelcome = (event) => {
     event.preventDefault();
@@ -48,60 +46,65 @@ export default function Home() {
         id="hero"
       >
         <Carousel />
-        <div className="absolute z-[70] flex w-full flex-col items-center justify-center top-1/2">
-          <form className="container w-full lg:w-1/2 mx-auto">
-            <label
-              htmlFor="default-search"
-              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-            >
-              Search
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg
-                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
+        <div className="absolute z-[70] w-full top-1/4">
+          <div className="container flex flex-col gap-6">
+            <h1 className="text-4xl font-extrabold text-center text-gray-100">
+              Hi! Mau ke mana hari ini?
+            </h1>
+            <form className="w-full lg:w-1/2 mx-auto">
+              <label
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              >
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
+                  placeholder="Mau pergi ke mana hari ini?"
+                />
+                <button
+                  type="submit"
+                  className="text-white hidden md:block absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
+                  Search
+                </button>
               </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
-                placeholder="Mau pergi ke mana hari ini?"
-              />
+
               <button
                 type="submit"
-                className="text-white hidden md:block absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
+                className="text-white block md:hidden mt-2 w-full end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
               >
                 Search
               </button>
-            </div>
-
-            <button
-              type="submit"
-              className="text-white block md:hidden mt-2 w-full end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
-            >
-              Search
-            </button>
-          </form>
+            </form>
+          </div>
         </div>
         <div className="absolute flex justify-center w-1/2 left-1/4 z-[60] bottom-5">
           <a
             href=""
             id="eksplorasi-btn"
             onClick={scrollToWelcome}
-            className="bg-transparent transition-transform ease-in-out duration-500 translate-y-48 text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute"
+            className="bg-transparent text-center text-white font-bold text-2xl bottom-0 p-4 rounded-lg absolute"
           >
             Yuk eksplorasi <span className="font-bold">Jakarta</span>!
             <span className="text-3xl block motion-safe:animate-bounce">
