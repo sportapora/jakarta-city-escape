@@ -13,6 +13,7 @@ export default function DestinationDetail() {
       .getElementById("destination-desc")
       .classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
+    document.getElementById("map").classList.remove("hidden");
   };
 
   const [destination, setDestination] = useState([]);
@@ -86,6 +87,19 @@ export default function DestinationDetail() {
       <div className="dark-layer opacity-0" id="dark-layer"></div>
       <div className="container mt-16 dark:text-gray-200">
         <p className="tracking-wide text-justify">{destination.deskripsi}</p>
+
+        <h2 className="text-4xl font-bold mt-16">Lokasi {destination.nama}</h2>
+
+        <div className="w-full h-[500px]">
+          <iframe
+            loading="lazy"
+            id="map"
+            className="border-0 hidden rounded-md mt-6 w-full h-full"
+            allowFullScreen={true}
+            referrerPolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM&q=${destination.nama}`}
+          />
+        </div>
 
         <h2 className="text-4xl font-bold mt-16">
           Gimana sih caranya ke {destination.nama} ?
