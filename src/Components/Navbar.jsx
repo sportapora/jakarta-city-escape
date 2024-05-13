@@ -1,17 +1,6 @@
 export default function Navbar() {
   let href = window.location.href;
 
-  window.onscroll = function () {
-    let nav = document.getElementById("nav");
-    if (window.pageYOffset >= 75) {
-      nav.classList.remove("bg-transparent");
-      nav.classList.add("bg-gray-100/50");
-    } else {
-      nav.classList.add("bg-transparent");
-      nav.classList.remove("bg-gray-100/50");
-    }
-  };
-
   window.onload = function () {
     var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
     var themeToggleLightIcon = document.getElementById(
@@ -60,7 +49,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-screen bg-transparent shadow fixed top-0 z-[99] transition-all duration-500 font-worksans font-extralight dark:bg-stone-900"
+      className="w-screen bg-gray-100 bg-opacity-50 shadow fixed top-0 z-[99] transition-all duration-500 font-worksans font-extralight dark:bg-stone-900"
       id="nav"
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-[6rem] py-4">
