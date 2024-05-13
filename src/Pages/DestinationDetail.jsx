@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function DestinationDetail() {
   let lastSegURL = window.location.href.split("/").pop();
+  let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
 
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
@@ -97,7 +98,7 @@ export default function DestinationDetail() {
             className="border-0 hidden rounded-md mt-6 w-full h-full"
             allowFullScreen={true}
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM&q=${destination.nama}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${destination.nama}`}
           />
         </div>
 
