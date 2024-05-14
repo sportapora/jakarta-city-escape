@@ -6,6 +6,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
+  const BASE_URL = window.location.origin;
   const [destinations, setDestinations] = useState([]);
 
   window.onload = function () {
@@ -31,7 +32,9 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/getDestinationsForHomepage")
+      .get(
+        "https://jakarta-city-escape-be.vercel.app/api/getDestinationsForHomepage"
+      )
       .then((response) => {
         setDestinations(response.data.data);
       });
@@ -157,7 +160,7 @@ export default function Home() {
                   <div className="w-full lg:w-1/2">
                     <div className="flex justify-center lg:justify-end">
                       <img
-                        src={`${destination.image}`}
+                        src={`${BASE_URL}/${destination.image}`}
                         className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6 dark:hover:shadow-gray-100 dark:hover:shadow-lg"
                         alt={destination.nama}
                       />
@@ -173,7 +176,7 @@ export default function Home() {
                 >
                   <div className="flex justify-center lg:justify-start">
                     <img
-                      src={`${destination.image}`}
+                      src={`${BASE_URL}/${destination.image}`}
                       className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 -rotate-6 dark:hover:shadow-gray-100 dark:hover:shadow-lg"
                       alt="Kota Tua"
                     />
