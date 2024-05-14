@@ -9,23 +9,24 @@ import DestinationDetail from "./Pages/DestinationDetail.jsx";
 import AboutDevs from "./Pages/AboutDevs.jsx";
 
 const BASE_URL = window.location.origin;
+console.log(BASE_URL);
 
 const router = createBrowserRouter([
   {
-    path: `${BASE_URL}`,
+    path: "/",
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: `${BASE_URL}/jelajahi`,
+    path: "/jelajahi",
     element: <ExploreJakarta />,
   },
   {
-    path: `${BASE_URL}/jelajahi/:namaDestinasi`,
+    path: "/jelajahi/:namaDestinasi",
     element: <DestinationDetail />,
   },
   {
-    path: `${BASE_URL}/about-devs`,
+    path: "/about-devs",
     element: <AboutDevs />,
   },
 ]);
