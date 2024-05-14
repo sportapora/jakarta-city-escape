@@ -6,6 +6,9 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
+
+  const [search, setSearch] = useState('')
+  
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
     document.getElementById("footer").classList.add("hidden");
@@ -40,6 +43,21 @@ export default function Home() {
         setDestinations(response.data.data);
       });
   }, []);
+
+
+  const fetchAPI = (value) => {
+    fetch("http://localhost:3000/jakartacityescape/api/getDestinationsForHomepage").then((response) => response.json()).then((json) => {
+      const results = json.filter((data) =>{
+        return value && data && data.nama && data.nama.toLowerCase().includes(value)
+      })
+      console.log(results)
+    })
+  }
+
+  const handleChange = (value) =>{
+    setSearch(value)
+    fetchAPI(value)
+  }
 
   return (
     <Layout>
@@ -79,6 +97,8 @@ export default function Home() {
                 id="default-search"
                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
                 placeholder="Mau pergi ke mana hari ini?"
+                value={search}
+                onChange={(event) => handleChange(event.target.value)}
               />
               <button
                 type="submit"
