@@ -3,19 +3,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function DestinationDetail() {
+  const BASE_URL = window.location.origin;
   let lastSegURL = window.location.href.split("/").pop();
   let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
   const [destination, setDestination] = useState([]);
   const [featuredGallery, setFeaturedGallery] = useState("");
+  const [map, setMap] = useState("");
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/getDestination/${lastSegURL}`
+        `https://jakarta-city-escape-be.vercel.app/api/getDestination/${lastSegURL}`
       )
       .then((response) => {
         setDestination(response.data.data[0]);
         setFeaturedGallery(response.data.data[0].images[0]);
+        setMap(lastSegURL);
       });
   }, []);
 
@@ -75,7 +78,7 @@ export default function DestinationDetail() {
           <div className="object-cover object-center">
             <img
               className="h-full object-cover object-center w-full rounded-lg"
-              src={`${featuredGallery}`}
+              src={`${BASE_URL}/${featuredGallery}`}
               alt={`${destination.nama}`}
             />
           </div>
@@ -128,7 +131,7 @@ export default function DestinationDetail() {
             className="border-0 rounded-md mt-6 w-full h-full"
             allowFullScreen={true}
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${destination.nama}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${map}`}
           />
         </div>
 

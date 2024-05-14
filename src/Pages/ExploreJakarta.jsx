@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ExploreJakarta() {
+  const BASE_URL = window.location.origin;
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
@@ -29,7 +30,7 @@ export default function ExploreJakarta() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/getAllDestinations")
+      .get("https://jakarta-city-escape-be.vercel.app/api/getAllDestinations")
       .then((response) => {
         setDestinations(response.data.data.destinations);
       });
