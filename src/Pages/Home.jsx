@@ -13,7 +13,7 @@ export default function Home() {
     document.getElementById("footer").classList.add("hidden");
     document.getElementById("layout").classList.remove("lg:pb-[30%]");
     document.getElementById("dark-layer").classList.remove("opacity-0");
-    document.getElementById("dark-layer").classList.add("opacity-75");
+    document.getElementById("dark-layer").classList.add("opacity-25");
   };
 
   gsap.registerPlugin(ScrollToPlugin);
