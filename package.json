@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@hapi/hapi": "^21.3.9",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",
     "gsap": "^3.12.5",

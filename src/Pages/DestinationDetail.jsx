@@ -11,7 +11,7 @@ export default function DestinationDetail() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/jakartacityescape/api/getDestination/${lastSegURL}`
+        `http://localhost:3000/api/getDestination/${lastSegURL}`
       )
       .then((response) => {
         setDestination(response.data.data[0]);

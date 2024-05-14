@@ -29,7 +29,7 @@ export default function ExploreJakarta() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/jakartacityescape/api/getAllDestinations")
+      .get("http://localhost:3000/api/getAllDestinations")
       .then((response) => {
         setDestinations(response.data.data.destinations);
       });

@@ -1,6 +1,5 @@
 export default function Navbar() {
   let href = window.location.pathname.split("/");
-  console.log(href);
 
   return (
     <nav
