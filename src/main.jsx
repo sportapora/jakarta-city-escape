@@ -8,22 +8,24 @@ import ExploreJakarta from "./Pages/ExploreJakarta.jsx";
 import DestinationDetail from "./Pages/DestinationDetail.jsx";
 import AboutDevs from "./Pages/AboutDevs.jsx";
 
+const BASE_URL = window.location.origin;
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: `${BASE_URL}`,
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/jelajahi",
+    path: `${BASE_URL}/jelajahi`,
     element: <ExploreJakarta />,
   },
   {
-    path: "/jelajahi/:namaDestinasi",
+    path: `${BASE_URL}/jelajahi/:namaDestinasi`,
     element: <DestinationDetail />,
   },
   {
-    path: "/about-devs",
+    path: `${BASE_URL}/about-devs`,
     element: <AboutDevs />,
   },
 ]);
