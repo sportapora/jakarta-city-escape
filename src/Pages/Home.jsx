@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/getDestinationsForHomepage")
+      .get("http://localhost:8000/api/getDestinationsForHomepage")
       .then((response) => {
         setDestinations(response.data.data);
       });
