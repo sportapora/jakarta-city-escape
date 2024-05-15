@@ -1,4 +1,4 @@
-import Slogan from "../assets/Sukses_Jakarta_Untuk_Indonesia.png";
+import Slogan from "../../public/assets/Sukses_Jakarta_Untuk_Indonesia.png";
 
 export default function Footer() {
   return (

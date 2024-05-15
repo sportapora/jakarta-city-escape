@@ -46,7 +46,7 @@ export default function Home() {
         id="hero"
       >
         <Carousel />
-        <div className="absolute z-[70] w-full top-1/4">
+        <div className="absolute z-[70] w-full top-1/3">
           <div className="container flex flex-col gap-6">
             <h1 className="text-4xl font-extrabold text-center text-gray-100">
               Hi! Mau ke mana hari ini?

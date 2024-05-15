@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function DestinationDetail() {
-  const BASE_URL = window.location.origin;
   let lastSegURL = window.location.href.split("/").pop();
   let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
   const [destination, setDestination] = useState([]);
   const [featuredGallery, setFeaturedGallery] = useState("");
   const [map, setMap] = useState("");
+
+  window.onload = () => {
+    document.getElementById("footer").classList.remove("hidden");
+    document.getElementById("layout").classList.add("lg:pb-[30%]");
+  };
 
   useEffect(() => {
     axios
@@ -78,7 +82,7 @@ export default function DestinationDetail() {
           <div className="object-cover object-center">
             <img
               className="h-full object-cover object-center w-full rounded-lg"
-              src={`${BASE_URL}/${featuredGallery}`}
+              src={`${featuredGallery}`}
               alt={`${destination.nama}`}
             />
           </div>
