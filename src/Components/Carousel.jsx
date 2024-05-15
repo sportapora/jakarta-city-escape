@@ -1,10 +1,10 @@
-import MonasHero from "../assets/monas.jpg";
-import KotuHero from "../assets/kotu-hero.jpg";
-import TMIIHero from "../assets/tmii.png";
-import BundHI from "../assets/BundHI.jpg";
-import musMac from "../assets/museumMacan.jpg";
-import bundar from "../assets/tesBundh.webp";
-import Hutan from "../assets/HutanKotaSCBD.jpeg";
+import MonasHero from "../../public/assets/monas.jpg";
+import KotuHero from "../../public/assets/kotu-hero.jpg";
+import TMIIHero from "../../public/assets/tmii.png";
+import BundHI from "../../public/assets/BundHI.jpg";
+import musMac from "../../public/assets/museumMacan.jpg";
+import bundar from "../../public/assets/tesBundh.webp";
+import Hutan from "../../public/assets/HutanKotaSCBD.jpeg";
 
 export default function Carousel() {
   return (

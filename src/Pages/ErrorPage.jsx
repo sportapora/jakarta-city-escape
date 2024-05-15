@@ -1,4 +1,4 @@
-import Kotu from "../assets/kotu-hero.jpg";
+import Kotu from "../../public/assets/kotu-hero.jpg";
 
 export default function ErrorPage() {
   return (
