@@ -10,62 +10,62 @@ export default function Carousel() {
   return (
     <div
       id="default-carousel"
-      class="relative h-full w-full"
+      className="relative h-full w-full"
       data-carousel="slide"
     >
-      <div class="relative h-full object-cover object-center overflow-hidden">
-        <div class="duration-700 ease-in-out" data-carousel-item>
+      <div className="relative h-full object-cover object-center overflow-hidden">
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={MonasHero}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={KotuHero}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={TMIIHero}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={BundHI}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={musMac}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={bundar}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />
         </div>
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src={Hutan}
-            class="absolute
+            className="absolute
             w-full h-full object-cover object-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="Destinasi Wisata"
           />

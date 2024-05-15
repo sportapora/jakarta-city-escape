@@ -8,9 +8,6 @@ import ExploreJakarta from "./Pages/ExploreJakarta.jsx";
 import DestinationDetail from "./Pages/DestinationDetail.jsx";
 import AboutDevs from "./Pages/AboutDevs.jsx";
 
-const BASE_URL = window.location.origin;
-console.log(BASE_URL);
-
 const router = createBrowserRouter([
   {
     path: "/",
