@@ -7,6 +7,8 @@ import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
   const [destinations, setDestinations] = useState([]);
+  const [allDestinations, setAllDestinations] = useState([]);
+  const [search, setSearch] = useState("");
 
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
@@ -37,7 +39,89 @@ export default function Home() {
       .then((response) => {
         setDestinations(response.data.data);
       });
+    axios
+      .get("https://jakarta-city-escape-be.vercel.app/api/getAllDestinations")
+      .then((response) => {
+        setAllDestinations(response.data.data.destinations);
+      });
   }, []);
+
+  const SearchPopUp = () => {
+    let filteredDestinations = allDestinations;
+
+    if (search != "") {
+      if (search) {
+        filteredDestinations = filteredDestinations.filter((destination) =>
+          destination.nama.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+
+      return (
+        <div className="p-4 rounded-b-lg bg-gray-200/75 block w-full">
+          <ul>
+            {filteredDestinations.map((destination) => (
+              <li
+                key={destination.id}
+                className="mb-6 p-2 rounded-lg hover:bg-stone-400 transition-colors ease-in-out duration-500"
+              >
+                <a
+                  href={`/jelajahi/${destination.nama
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}`}
+                  className="flex flex-row gap-6"
+                >
+                  <div className="w-1/4">
+                    <img
+                      src={`${destination.image}`}
+                      className="w-full rounded-md object-cover object-center"
+                    />
+                  </div>
+                  <div className="w-full flex flex-col">
+                    <h1 className="text-xl font-bold">{destination.nama}</h1>
+                    <p className="inline-flex items-center mt-2 text-sm tracking-wide">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000000"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-layers-3"
+                      >
+                        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+                        <path d="m6.08 9.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59" />
+                        <path d="m6.08 14.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59" />
+                      </svg>
+                      &nbsp;{destination.kategori}&nbsp; | &nbsp;
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000000"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-map-pin"
+                      >
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      &nbsp;{destination.lokasi}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+  };
 
   return (
     <Layout>
@@ -79,16 +163,12 @@ export default function Home() {
                 <input
                   type="search"
                   id="default-search"
-                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-t-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
                   placeholder="Mau pergi ke mana hari ini?"
                 />
-                <button
-                  type="submit"
-                  className="text-white hidden md:block absolute end-2.5 bottom-2.5 btn-primary font-medium rounded-lg text-sm px-4 py-2 "
-                >
-                  Search
-                </button>
               </div>
+              {<SearchPopUp />}
 
               <button
                 type="submit"
