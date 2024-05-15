@@ -6,7 +6,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
 
 export default function Home() {
-  const BASE_URL = window.location.origin;
   const [destinations, setDestinations] = useState([]);
 
   window.onload = function () {
