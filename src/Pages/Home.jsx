@@ -58,7 +58,10 @@ export default function Home() {
 
       return (
         <>
-          <div className="p-4 rounded-b-lg bg-gray-200/75 hidden lg:block w-full">
+          <div
+            className="p-4 rounded-b-lg bg-gray-200/75 
+          block w-full"
+          >
             <ul>
               {filteredDestinations.map((destination) => (
                 <li
@@ -71,15 +74,15 @@ export default function Home() {
                       .toLowerCase()}`}
                     className="flex flex-row gap-6"
                   >
-                    <div className="w-1/4">
+                    <div className="w-1/3 flex object-cover">
                       <img
                         src={`${destination.image}`}
-                        className="w-full rounded-md object-cover object-center"
+                        className="w-full rounded-md object-cover"
                       />
                     </div>
                     <div className="w-full flex flex-col">
                       <h1 className="text-xl font-bold">{destination.nama}</h1>
-                      <p className="inline-flex items-center mt-2 text-sm tracking-wide">
+                      <p className="inline-flex items-center mt-2 text-xs tracking-wide">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
