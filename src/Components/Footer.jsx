@@ -1,9 +1,12 @@
-import Slogan from "../assets/Sukses_Jakarta_Untuk_Indonesia.png";
+import Slogan from "../../public/assets/Sukses_Jakarta_Untuk_Indonesia.png";
 
 export default function Footer() {
   return (
-    <div className="w-full mt-24 bg-transparent lg:mt-0 lg:absolute bottom-0 shadow-[0_-1px_4px_rgba(0,0,0,0.3)] dark:shadow-[0_-1px_4px_rgba(255,255,255,0.3)] py-4 gap-16 text-center lg:text-left lg:container dark:text-gray-100" id="footer">
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <div
+      className="w-full hidden mt-24 bg-transparent lg:mt-0 lg:absolute bottom-0 shadow-[0_-1px_4px_rgba(0,0,0,0.3)] dark:shadow-[0_-1px_4px_rgba(255,255,255,0.3)] py-4 gap-16 text-center lg:text-left dark:text-gray-100"
+      id="footer"
+    >
+      <div className="container grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-6">
           <h1 className="text-2xl font-extrabold tracking-wide">
             Jakarta<span className="font-normal">CityEscape</span>

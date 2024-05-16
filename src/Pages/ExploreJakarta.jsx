@@ -1,15 +1,18 @@
 import Layout from "../Layout.jsx";
-import KotuHero from "../assets/kotu-hero.jpg";
+import KotuHero from "../../public/assets/kotu-hero.jpg";
 import Card from "../Components/Card.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ExploreJakarta() {
+  
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
     document.getElementById("dark-layer").classList.remove("opacity-0");
     document.getElementById("dark-layer").classList.add("opacity-25");
+    document.getElementById("footer").classList.remove("hidden");
+    document.getElementById("layout").classList.add("lg:pb-[30%]");
   };
 
   const categories = [
@@ -29,11 +32,57 @@ export default function ExploreJakarta() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/jakartacityescape/api/getAllDestinations")
+      .get("https://jakarta-city-escape-be.vercel.app/api/getAllDestinations")
       .then((response) => {
         setDestinations(response.data.data.destinations);
       });
   }, []);
+
+  const QueriedDestinations = () => {
+    let filteredDestinations = destinations;
+
+    // Filter destinations based on search criteria
+    if (search) {
+      filteredDestinations = filteredDestinations.filter((destination) =>
+        destination.nama.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    // Filter destinations based on category filter
+    if (filter) {
+      filteredDestinations = filteredDestinations.filter(
+        (destination) => destination.kategori === filter
+      );
+    }
+
+    // If there are no filtered destinations, display a message
+    if (filteredDestinations.length === 0) {
+      return (
+        <div className="my-10">
+          <h2 className="text-xl font-semibold text-center">
+            Tidak ada hasil yang sesuai.
+          </h2>
+        </div>
+      );
+    }
+
+    // Render filtered destinations
+    return filteredDestinations.map((destination) => (
+      <a
+        href={`/jelajahi/${destination.nama
+          .replace(/\s+/g, "-")
+          .toLowerCase()}`}
+        key={destination.id}
+        className="group"
+      >
+        <Card
+          nama={destination.nama}
+          image={destination.image}
+          deskripsi={destination.deskripsi.slice(0, 250)}
+        />
+      </a>
+    ));
+  };
 
   return (
     <Layout>
@@ -118,10 +167,10 @@ export default function ExploreJakarta() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-x"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-x"
               >
                 <path d="M18 6 6 18" />
                 <path d="m6 6 12 12" />
@@ -132,41 +181,7 @@ export default function ExploreJakarta() {
 
         {destinations.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16">
-            {filter != ""
-              ? destinations
-                  .filter((destination) => destination.kategori == filter)
-                  .map((destination, index) => (
-                    <a
-                      key={index}
-                      className="hover:-translate-y-4 group ease-in-out duration-300 transition-transform"
-                      href={`/jelajahi/${destination.nama
-                        .replace(/\s+/g, "-")
-                        .toLowerCase()}`}
-                    >
-                      <Card
-                        key={destination.id}
-                        nama={destination.nama}
-                        image={destination.image}
-                        deskripsi={destination.deskripsi.slice(0, 250)}
-                      />
-                    </a>
-                  ))
-              : destinations.map((destination, index) => (
-                  <a
-                    key={index}
-                    className="hover:-translate-y-4 group ease-in-out duration-300 transition-transform"
-                    href={`/jelajahi/${destination.nama
-                      .replace(/\s+/g, "-")
-                      .toLowerCase()}`}
-                  >
-                    <Card
-                      key={destination.id}
-                      nama={destination.nama}
-                      image={destination.image}
-                      deskripsi={destination.deskripsi.slice(0, 250)}
-                    />
-                  </a>
-                ))}
+            {<QueriedDestinations />}
           </div>
         ) : (
           <div className="my-10">

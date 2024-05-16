@@ -1,21 +1,18 @@
 import Layout from "../Layout.jsx";
 import Confetti from "../Components/Confetti.jsx";
-import Henry from "../assets/henry.jpeg";
-import Jeo from "../assets/jeo.jpg";
-import Ben from "../assets/ben.webp";
-import Maul from "../assets/maul.jpg";
-import MemeHenry from "../assets/MemeHenry.jpg"
-import MemeMaul from "../assets/MemeMaul.jpg"
-import MemeBen from "../assets/MemeBen.jpg"
-import MemeJeo from "../assets/MemeJeo.jpg"
-import PP from "../assets/Profile.png"
+import Henry from "/assets/henry.jpeg";
+import Jeo from "/assets/jeo.jpg";
+import Ben from "/assets/ben.webp";
+import Maul from "/assets/maul.jpg";
+import MemeHenry from "/assets/MemeHenry.jpg"
+import MemeMaul from "/assets/MemeMaul.jpg"
+import MemeBen from "/assets/MemeBen.jpg"
+import MemeJeo from "/assets/MemeJeo.jpg"
+import PP from "/assets/Profile.png"
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FiChevronsDown, FiChevronsUp } from "react-icons/fi";
 
 export default function AboutDevs() {
-
-  
-  
   return (
     <Layout>
       <div>
