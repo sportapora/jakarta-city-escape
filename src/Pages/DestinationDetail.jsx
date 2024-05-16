@@ -155,7 +155,7 @@ export default function DestinationDetail() {
           <h2 id="accordion-flush-heading-1">
             <button
               type="button"
-              className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
+              className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3"
               data-accordion-target="#accordion-flush-body-1"
               aria-expanded="true"
               aria-controls="accordion-flush-body-1"
@@ -194,7 +194,7 @@ export default function DestinationDetail() {
               <h2 id="accordion-flush-heading-2">
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
+                  className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3"
                   data-accordion-target="#accordion-flush-body-2"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-2"
@@ -223,7 +223,7 @@ export default function DestinationDetail() {
                 className="hidden"
                 aria-labelledby="accordion-flush-heading-2"
               >
-                <div className="py-5 px-3 border-b border-gray-200 dark:border-gray-700">
+                <div className="py-5 px-3 border-b border-gray-200">
                   <img src={destination.route_krl} />
                 </div>
               </div>

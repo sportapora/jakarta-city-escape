@@ -143,14 +143,14 @@ export default function Home() {
             <form className="w-full lg:w-1/2 mx-auto">
               <label
                 htmlFor="default-search"
-                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only"
               >
                 Search
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                   <svg
-                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    className="w-4 h-4 text-gray-500"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -169,7 +169,7 @@ export default function Home() {
                   type="search"
                   id="default-search"
                   onChange={(e) => setSearch(e.target.value)}
-                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-t-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-500 dark:focus:border-stone-500"
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-t-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500"
                   placeholder="Mau pergi ke mana hari ini?"
                 />
               </div>
@@ -194,7 +194,7 @@ export default function Home() {
       <div className="dark-layer opacity-0" id="dark-layer"></div>
 
       <div
-        className="container hidden mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s] dark:text-gray-100"
+        className="container hidden mt-16 transition-opacity opacity-0 ease-in-out duration-[1.75s]"
         id="welcome"
       >
         <h1 className="text-4xl lg:text-5xl font-bold text-center">
@@ -238,7 +238,7 @@ export default function Home() {
                     <div className="flex justify-center lg:justify-end">
                       <img
                         src={`${destination.image}`}
-                        className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6 dark:hover:shadow-gray-100 dark:hover:shadow-lg"
+                        className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 rotate-6"
                         alt={destination.nama}
                       />
                     </div>
@@ -254,7 +254,7 @@ export default function Home() {
                   <div className="flex justify-center lg:justify-start">
                     <img
                       src={`${destination.image}`}
-                      className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 -rotate-6 dark:hover:shadow-gray-100 dark:hover:shadow-lg"
+                      className="w-full lg:w-3/4 text-center hover:shadow mb-10 lg:mb-0 rounded-md hover:-translate-y-5 ease-in-out duration-200 -rotate-6"
                       alt="Kota Tua"
                     />
                   </div>

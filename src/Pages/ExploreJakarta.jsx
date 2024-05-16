@@ -148,7 +148,7 @@ export default function ExploreJakarta() {
               key={index}
               className={`bg-stone-300 ${
                 category === filter ? "bg-stone-600 text-white" : "200"
-              } flex items-center justify-center hover:bg-stone-600 hover:text-white text-stone-800 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full dark:bg-stone-700 dark:text-gray-300 dark:hover:bg-stone-800`}
+              } flex items-center justify-center hover:bg-stone-600 hover:text-white text-stone-800 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full`}
             >
               {category}
             </a>
@@ -156,7 +156,7 @@ export default function ExploreJakarta() {
           <a
             href=""
             onClick={(e) => handleFilter(e, null)}
-            className="bg-red-600 flex items-center justify-center gap-4 text-white hover:bg-red-700 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full dark:bg-red-700 dark:hover:bg-red-800"
+            className="bg-red-600 flex items-center justify-center gap-4 text-white hover:bg-red-700 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
           >
             Hapus filter
             <span>

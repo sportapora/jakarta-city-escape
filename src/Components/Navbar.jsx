@@ -3,7 +3,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-screen bg-gray-100 bg-opacity-50 shadow fixed top-0 z-[99] transition-all duration-500 font-worksans font-extralight dark:bg-stone-900"
+      className="w-screen bg-gray-100 bg-opacity-50 shadow fixed top-0 z-[99] transition-all duration-500 font-worksans font-extralight"
       id="nav"
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-[6rem] py-4">
@@ -37,11 +37,11 @@ export default function Navbar() {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-semibold flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-transparent md:dark:bg-transparent dark:border-stone-700">
+          <ul className="font-semibold flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
             <li>
               <a
                 href="/"
-                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-gray-100"
+                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0"
                 aria-current="page"
               >
                 Home
@@ -57,7 +57,7 @@ export default function Navbar() {
             <li>
               <a
                 href="/jelajahi"
-                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-gray-100"
+                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0"
               >
                 Jelajahi Jakarta di Sini!
               </a>
@@ -73,7 +73,7 @@ export default function Navbar() {
             <li>
               <a
                 href="/about-devs"
-                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-gray-100"
+                className="block py-2 px-3 text-gray-900 peer rounded md:bg-transparent md:p-0"
               >
                 About Devs
               </a>

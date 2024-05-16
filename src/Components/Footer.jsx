@@ -3,7 +3,7 @@ import Slogan from "../../public/assets/Sukses_Jakarta_Untuk_Indonesia.png";
 export default function Footer() {
   return (
     <div
-      className="w-full hidden mt-24 bg-transparent lg:mt-0 lg:absolute bottom-0 shadow-[0_-1px_4px_rgba(0,0,0,0.3)] dark:shadow-[0_-1px_4px_rgba(255,255,255,0.3)] py-4 gap-16 text-center lg:text-left dark:text-gray-100"
+      className="w-full hidden mt-24 bg-transparent lg:mt-0 lg:absolute bottom-0 shadow-[0_-1px_4px_rgba(0,0,0,0.3)] py-4 gap-16 text-center lg:text-left"
       id="footer"
     >
       <div className="container grid grid-cols-1 md:grid-cols-2">
@@ -25,19 +25,19 @@ export default function Footer() {
             <a href="/" className="peer">
               Home
             </a>
-            <div className="animated-underscore peer-hover:w-12 dark:bg-gray-100"></div>
+            <div className="animated-underscore peer-hover:w-12"></div>
           </div>
           <div className="mb-3 flex flex-col items-center lg:items-start">
             <a href="/jelajahi" className="peer">
               Jelajahi Jakarta di Sini!
             </a>
-            <div className="animated-underscore peer-hover:w-40 dark:bg-gray-100"></div>
+            <div className="animated-underscore peer-hover:w-40"></div>
           </div>
           <div className="mb-3 flex flex-col items-center lg:items-start">
             <a href="/about-devs" className="peer">
               About Devs
             </a>
-            <div className="animated-underscore peer-hover:w-24 dark:bg-gray-100"></div>
+            <div className="animated-underscore peer-hover:w-24"></div>
           </div>
         </div>
       </div>

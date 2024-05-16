@@ -21,7 +21,7 @@ export default function AboutDevs() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-8 rounded-lg max-w-screen-lg mx-auto">
               <div className="text-5xl font-extralight">
                 <h1 className="font-bold">THE MAGIC DEVS</h1>
-                <p className="mt-4">YOU'VE BEEN</p>
+                <p className="mt-4">YOU&apos;VE BEEN</p>
                 <p className="mt-4">SEARCHING FOR</p>
               </div>
               <div>
@@ -39,7 +39,7 @@ export default function AboutDevs() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 gap-8">
               <div className="w-72 h-24 pt-2 bg-white shadow-md rounded-2xl focus:h-[520px] focus:max-[500px] transition-all duration-500 flex flex-col transform -translate-y-20"
-                tabindex="0">
+                tabIndex="0">
                 
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2">
@@ -52,7 +52,7 @@ export default function AboutDevs() {
                   </div>
                 </div>
 
-                <div className="overflow-hidden mt-2 flex flex-col items-center transition-all ease-in-out duration-200" tabindex="0">
+                <div className="overflow-hidden mt-2 flex flex-col items-center transition-all ease-in-out duration-200" tabIndex="0">
                   <p className="mb-2 mt-5 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, cumque?</p>
                   <p className="mb-2 mt-5">Meme of the day:</p>
                   <img src={MemeHenry} className="w-52 h-52 ring-1 ring-black" />
