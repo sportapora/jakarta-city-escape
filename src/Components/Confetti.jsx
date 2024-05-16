@@ -25,12 +25,12 @@ function ConfettiButton() {
   };
 
   return (
-    <div className="flex justify-center my-26">
+    <div>
       <button
-        className="hover:scale-110 shadow-xl shadow-[40px_20px_30px_rgba(0,255,255,0.53] bg-stone-300 hover:shadow-[0_30px_45px_-15px_rgba(0,111,255,0.6)] transition-all duration-500 ease-in-out text-white font-bold py-2 px-4 rounded my-20"
+        className="bg-blue-500 text-white px-4 py-2 mt-10 rounded-full  hover:ring-2 ring-black"
         onClick={handleButtonClick}
       >
-        Apresiasi mereka 🎉
+        Appreciation
       </button>
       <Confetti active={isConfettiActive} config={config}/>
     </div>

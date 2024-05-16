@@ -5,29 +5,26 @@ import axios from "axios";
 export default function DestinationDetail() {
   let lastSegURL = window.location.href.split("/").pop();
   let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
-
-  window.onload = function () {
-    document.getElementById("hero-title").classList.remove("translate-y-72");
-    document.getElementById("dark-layer").classList.remove("opacity-0");
-    document.getElementById("dark-layer").classList.add("opacity-25");
-    document
-      .getElementById("destination-desc")
-      .classList.remove("translate-y-72");
-    document.getElementById("hero").classList.remove("opacity-0");
-    document.getElementById("map").classList.remove("hidden");
-  };
-
   const [destination, setDestination] = useState([]);
+  const [featuredGallery, setFeaturedGallery] = useState("");
+  const [map, setMap] = useState("");
+
+  window.onload = () => {
+    document.getElementById("footer").classList.remove("hidden");
+    document.getElementById("layout").classList.add("lg:pb-[30%]");
+  };
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/jakartacityescape/api/getDestination/${lastSegURL}`
+        `https://jakarta-city-escape-be.vercel.app/api/getDestination/${lastSegURL}`
       )
       .then((response) => {
         setDestination(response.data.data[0]);
+        setFeaturedGallery(response.data.data[0].images[0]);
+        setMap(lastSegURL);
       });
-  }, []);
+  });
 
   return (
     <Layout>
@@ -37,16 +34,8 @@ export default function DestinationDetail() {
         style={{ backgroundImage: `url(${destination.image})` }}
       >
         <div className="container text-stone-100 z-[55]">
-          <h1
-            className="text-left hero-title transition-transform ease-in-out duration-500 translate-y-72"
-            id="hero-title"
-          >
-            {destination.nama}
-          </h1>
-          <p
-            className="inline-flex mt-2 tracking-wide transition-transform ease-in-out duration-500 translate-y-72"
-            id="destination-desc"
-          >
+          <h1 className="text-left hero-title">{destination.nama}</h1>
+          <p className="inline-flex mt-2 tracking-wide">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -85,9 +74,57 @@ export default function DestinationDetail() {
           </p>
         </div>
       </div>
-      <div className="dark-layer opacity-0" id="dark-layer"></div>
+      <div className="dark-layer opacity-25"></div>
       <div className="container mt-16 dark:text-gray-200">
         <p className="tracking-wide text-justify">{destination.deskripsi}</p>
+
+        <div className="grid gap-4 mt-16">
+          <div className="object-cover object-center">
+            <img
+              className="h-full object-cover object-center w-full rounded-lg"
+              src={`${featuredGallery}`}
+              alt={`${destination.nama}`}
+            />
+          </div>
+          <div className="grid grid-cols-5 gap-4">
+            <div className="relative">
+              <img
+                className="h-full max-w-full rounded-lg"
+                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+                alt=""
+              />
+              <div className="card-dark-layer opacity-50"></div>
+            </div>
+            <div>
+              <img
+                className="h-full max-w-full rounded-lg"
+                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="h-full max-w-full rounded-lg"
+                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="h-full max-w-full rounded-lg"
+                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="h-full max-w-full rounded-lg"
+                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
 
         <h2 className="text-4xl font-bold mt-16">Lokasi {destination.nama}</h2>
 
@@ -95,10 +132,10 @@ export default function DestinationDetail() {
           <iframe
             loading="lazy"
             id="map"
-            className="border-0 hidden rounded-md mt-6 w-full h-full"
+            className="border-0 rounded-md mt-6 w-full h-full"
             allowFullScreen={true}
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${destination.nama}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${map}`}
           />
         </div>
 
@@ -118,7 +155,7 @@ export default function DestinationDetail() {
           <h2 id="accordion-flush-heading-1">
             <button
               type="button"
-              class="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
+              className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
               data-accordion-target="#accordion-flush-body-1"
               aria-expanded="true"
               aria-controls="accordion-flush-body-1"
@@ -126,7 +163,7 @@ export default function DestinationDetail() {
               <span>Via JakLingko (Transjakarta, MRT, Mikrotrans)</span>
               <svg
                 data-accordion-icon
-                class="w-3 h-3 rotate-180 shrink-0"
+                className="w-3 h-3 rotate-180 shrink-0"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -134,9 +171,9 @@ export default function DestinationDetail() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M9 5 5 1 1 5"
                 />
               </svg>
@@ -144,56 +181,56 @@ export default function DestinationDetail() {
           </h2>
           <div
             id="accordion-flush-body-1"
-            class="hidden"
+            className="hidden"
             aria-labelledby="accordion-flush-heading-1"
           >
-            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+            <div className="py-5 border-b border-gray-200 dark:border-gray-700">
               <img src={destination.route} />
             </div>
           </div>
 
           {destination.routekrl != "" ? (
             <div>
-
-          <h2 id="accordion-flush-heading-2">
-            <button
-              type="button"
-              class="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
-              data-accordion-target="#accordion-flush-body-2"
-              aria-expanded="false"
-              aria-controls="accordion-flush-body-2"
-            >
-              <span>Via KRL/LRT</span>
-              <svg
-                data-accordion-icon
-                class="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
+              <h2 id="accordion-flush-heading-2">
+                <button
+                  type="button"
+                  className="flex items-center justify-between w-full py-5 px-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
+                  data-accordion-target="#accordion-flush-body-2"
+                  aria-expanded="false"
+                  aria-controls="accordion-flush-body-2"
+                >
+                  <span>Via KRL/LRT</span>
+                  <svg
+                    data-accordion-icon
+                    className="w-3 h-3 rotate-180 shrink-0"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5 5 1 1 5"
+                    />
+                  </svg>
+                </button>
+              </h2>
+              <div
+                id="accordion-flush-body-2"
+                className="hidden"
+                aria-labelledby="accordion-flush-heading-2"
               >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-flush-body-2"
-            class="hidden"
-            aria-labelledby="accordion-flush-heading-2"
-          >
-            <div class="py-5 px-3 border-b border-gray-200 dark:border-gray-700">
-              <img src={destination.route_krl} />
+                <div className="py-5 px-3 border-b border-gray-200 dark:border-gray-700">
+                  <img src={destination.route_krl} />
+                </div>
+              </div>
             </div>
-          </div>
-            </div>
-
-          ) : ""}
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </Layout>

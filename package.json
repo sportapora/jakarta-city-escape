@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@hapi/hapi": "^21.3.9",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dom-confetti": "^0.2.0",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
