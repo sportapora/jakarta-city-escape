@@ -6,7 +6,7 @@ export default function DestinationDetail() {
   let lastSegURL = window.location.href.split("/").pop();
   let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
   const [destination, setDestination] = useState([]);
-  const [featuredGallery, setFeaturedGallery] = useState("");
+  const [featuredGallery, setFeaturedGallery] = useState([]);
   const [map, setMap] = useState("");
 
   window.onload = () => {
@@ -21,10 +21,27 @@ export default function DestinationDetail() {
       )
       .then((response) => {
         setDestination(response.data.data[0]);
-        setFeaturedGallery(response.data.data[0].images[0]);
+        setFeaturedGallery(response.data.data[0].images);
         setMap(lastSegURL);
       });
-  });
+  }, []);
+
+  const GalleryImages = () => {
+    return featuredGallery.map((image, index) => {
+      if (index != 0) {
+        return (
+          <div className="relative" key={index}>
+            <img
+              className="h-full max-w-full rounded-lg"
+              src={`${image}`}
+              alt={`${destination.nama}`}
+            />
+            <div className="card-dark-layer opacity-50"></div>
+          </div>
+        );
+      }
+    });
+  };
 
   return (
     <Layout>
@@ -82,47 +99,12 @@ export default function DestinationDetail() {
           <div className="object-cover object-center">
             <img
               className="h-full object-cover object-center w-full rounded-lg"
-              src={`${featuredGallery}`}
+              src={`${featuredGallery[0]}`}
               alt={`${destination.nama}`}
             />
           </div>
           <div className="grid grid-cols-5 gap-4">
-            <div className="relative">
-              <img
-                className="h-full max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-                alt=""
-              />
-              <div className="card-dark-layer opacity-50"></div>
-            </div>
-            <div>
-              <img
-                className="h-full max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-full max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-full max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-full max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
-                alt=""
-              />
-            </div>
+            <GalleryImages />
           </div>
         </div>
 
@@ -185,11 +167,11 @@ export default function DestinationDetail() {
             aria-labelledby="accordion-flush-heading-1"
           >
             <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-              <img src={destination.route} />
+              <img src={destination.route_jaklingko} />
             </div>
           </div>
 
-          {destination.routekrl != "" ? (
+          {destination.route_krl != "" ? (
             <div>
               <h2 id="accordion-flush-heading-2">
                 <button
