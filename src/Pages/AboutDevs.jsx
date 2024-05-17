@@ -9,7 +9,7 @@ import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 export default function AboutDevs() {
   window.onload = function () {
     document.getElementById("footer").classList.remove("hidden");
-    document.getElementById("layout").classList.add("lg:pb-[30%]");
+    document.getElementById("layout").classList.add("lg:pb-[7.5%]");
   }
 
   return (
