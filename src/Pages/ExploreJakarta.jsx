@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ExploreJakarta() {
-  
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
@@ -140,7 +139,7 @@ export default function ExploreJakarta() {
           </div>
         </form>
 
-        <div className="lg:container w-full mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="w-full mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category, index) => (
             <a
               href=""
@@ -158,13 +157,12 @@ export default function ExploreJakarta() {
             onClick={(e) => handleFilter(e, null)}
             className=" flex items-center justify-center gap-4 text-white hover:ring-2 bg-blue-600 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
           >
-            All
-            
+            Tampilkan Semua
           </a>
         </div>
 
         {destinations.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {<QueriedDestinations />}
           </div>
         ) : (
