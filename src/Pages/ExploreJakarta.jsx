@@ -18,6 +18,7 @@ export default function ExploreJakarta() {
     "Sejarah, Seni & Budaya",
     "Taman Hiburan dan Edukasi",
     "Rekreasi",
+    "Agama",
   ];
 
   const [destinations, setDestinations] = useState([]);
@@ -26,7 +27,7 @@ export default function ExploreJakarta() {
 
   const handleFilter = (e, index) => {
     e.preventDefault();
-    index != null ? setFilter(destinations[index].kategori) : setFilter("");
+    index != null ? setFilter(categories[index]) : setFilter("");
   };
 
   useEffect(() => {
