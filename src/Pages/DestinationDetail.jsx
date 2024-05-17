@@ -172,7 +172,6 @@ export default function DestinationDetail() {
           </div>
 
           {destination.route_krl != "" ? (
-          {destination.route_krl != "" ? (
             <div>
               <h2 id="accordion-flush-heading-2">
                 <button
