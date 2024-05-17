@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ExploreJakarta() {
-  
   window.onload = function () {
     document.getElementById("hero-title").classList.remove("translate-y-72");
     document.getElementById("hero").classList.remove("opacity-0");
@@ -140,7 +139,7 @@ export default function ExploreJakarta() {
           </div>
         </form>
 
-        <div className="lg:container w-full mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="w-full mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category, index) => (
             <a
               href=""
@@ -156,9 +155,9 @@ export default function ExploreJakarta() {
           <a
             href=""
             onClick={(e) => handleFilter(e, null)}
-            className="bg-red-600 flex items-center justify-center gap-4 text-white hover:bg-red-700 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
+            className="btn-primary flex items-center justify-center gap-4 text-white transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
           >
-            Hapus filter
+            Tampilkan Semua
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +179,7 @@ export default function ExploreJakarta() {
         </div>
 
         {destinations.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {<QueriedDestinations />}
           </div>
         ) : (

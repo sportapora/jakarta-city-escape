@@ -7,6 +7,7 @@ export default function DestinationDetail() {
   let key = "AIzaSyCW0LsgRb3ODnNk9M43hosaZWbo9pnqcJM";
   const [destination, setDestination] = useState([]);
   const [featuredGallery, setFeaturedGallery] = useState([]);
+  const [mainGalleryImage, setMainGalleryImage] = useState("");
   const [map, setMap] = useState("");
 
   window.onload = () => {
@@ -26,17 +27,23 @@ export default function DestinationDetail() {
       });
   }, []);
 
+  const handleGalleryImage = (index) => {
+    let tempImage = mainGalleryImage ? mainGalleryImage : featuredGallery[0];
+    setMainGalleryImage(featuredGallery[index]);
+    featuredGallery[index] = tempImage;
+  };
+
   const GalleryImages = () => {
     return featuredGallery.map((image, index) => {
       if (index != 0) {
         return (
           <div className="relative" key={index}>
             <img
-              className="h-full max-w-full rounded-lg"
+              onClick={() => handleGalleryImage(index)}
+              className="h-full max-w-full rounded-lg transition-transform ease-in-out duration-500 hover:-translate-y-2 cursor-pointer"
               src={`${image}`}
               alt={`${destination.nama}`}
             />
-            <div className="card-dark-layer opacity-50"></div>
           </div>
         );
       }
@@ -87,19 +94,76 @@ export default function DestinationDetail() {
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            &nbsp;{destination.lokasi}
+            &nbsp;{destination.lokasi}&nbsp;
+            <div className="w-[2px] h-auto bg-white"></div>
+            &nbsp;
+            <a
+              href={
+                destination.instagram
+                  ? `https://instagram.com/${destination.instagram.replace(
+                      "@",
+                      ""
+                    )}`
+                  : ""
+              }
+              className="inline-flex"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-instagram"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+              &nbsp;
+              {destination.instagram ?? "Informasi tidak tersedia"}
+            </a>
           </p>
+          <div>
+            <p className="inline-flex mt-2 tracking-wide">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-clock"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              &nbsp;
+              {destination.jamOp ?? "Informasi tidak tersedia"}
+            </p>
+          </div>
         </div>
       </div>
       <div className="dark-layer opacity-25"></div>
       <div className="container mt-16 dark:text-gray-200">
         <p className="tracking-wide text-justify">{destination.deskripsi}</p>
-
         <div className="grid gap-4 mt-16">
           <div className="object-cover object-center">
             <img
               className="h-full object-cover object-center w-full rounded-lg"
-              src={`${featuredGallery[0]}`}
+              src={
+                mainGalleryImage === ""
+                  ? `${featuredGallery[0]}`
+                  : `${mainGalleryImage}`
+              }
               alt={`${destination.nama}`}
             />
           </div>
