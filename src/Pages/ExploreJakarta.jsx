@@ -18,7 +18,7 @@ export default function ExploreJakarta() {
   const categories = [
     "Sejarah, Seni & Budaya",
     "Taman Hiburan dan Edukasi",
-    "Taman Hiburan",
+    "Rekreasi",
   ];
 
   const [destinations, setDestinations] = useState([]);
@@ -156,26 +156,10 @@ export default function ExploreJakarta() {
           <a
             href=""
             onClick={(e) => handleFilter(e, null)}
-            className="bg-red-600 flex items-center justify-center gap-4 text-white hover:bg-red-700 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
+            className=" flex items-center justify-center gap-4 text-white hover:ring-2 bg-blue-600 transition-color ease-in-out duration-300 text-center text-xs font-medium me-2 px-4 py-2 rounded-full"
           >
-            Hapus filter
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-x"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
-            </span>
+            All
+            
           </a>
         </div>
 
