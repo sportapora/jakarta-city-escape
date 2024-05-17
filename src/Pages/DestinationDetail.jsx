@@ -167,7 +167,7 @@ export default function DestinationDetail() {
             aria-labelledby="accordion-flush-heading-1"
           >
             <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-              <img src={destination.route_jaklingko} />
+              <img src={`${destination.route_jaklingko}`} />
             </div>
           </div>
 
