@@ -17,13 +17,13 @@ export default function AboutDevs() {
       <div>
         <div className="flex lg:items-center justify-center min-h-screen">
           <div className="mt-36">
-            <div className=" grid grid-cols-1 sm:grid-cols-2 mx-10 md:mx-auto rounded-lg max-w-screen-lg">
+            <div className=" grid grid-cols-1 md:grid-cols-2 mx-10 md:mx-auto rounded-lg max-w-screen-lg">
               <div className="text-5xl font-extralight">
                 <h1 className="font-bold">THE MAGIC DEVS</h1>
                 <p className="mt-4">YOU&apos;VE BEEN</p>
                 <p className="mt-4">SEARCHING FOR</p>
               </div>
-              <div>
+              <div className="mt-6 md:mt-0">
                 <p>
                   Website ini dikelola oleh tim yang beranggotakan 4 (empat)
                   orang dari Program Studi Informatika, Universitas Multimedia
