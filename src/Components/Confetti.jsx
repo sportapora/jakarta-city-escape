@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import Confetti from 'react-dom-confetti';
+import { useState } from "react";
+import Confetti from "react-dom-confetti";
+import useSound from "use-sound";
+import confettiSfx from "/sound/ConfettiSound.mp3";
 
 function ConfettiButton() {
+  const [play] = useSound(confettiSfx);
   const [isConfettiActive, setConfettiActive] = useState(false);
 
   const handleButtonClick = () => {
+    play();
     setConfettiActive(true);
     setTimeout(() => {
       setConfettiActive(false);
@@ -21,7 +25,7 @@ function ConfettiButton() {
     stagger: 3,
     width: "10px",
     height: "10px",
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
   };
 
   return (
@@ -32,7 +36,7 @@ function ConfettiButton() {
       >
         Appreciation
       </button>
-      <Confetti active={isConfettiActive} config={config}/>
+      <Confetti active={isConfettiActive} config={config} />
     </div>
   );
 }
