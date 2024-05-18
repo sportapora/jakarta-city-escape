@@ -4,11 +4,20 @@ import axios from "axios";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
+import Ancol from "/assets/ancol.jpeg";
+import Katedral from "/assets/katedral.png";
+import Istiqlal from "/assets/istiqlal.webp";
+import TMII from "/assets/TMII.jpg";
+import TMII1 from "/assets/TMII1.jpeg";
+import Monas from "/assets/monas.jpg";
+import KotaTua from "/assets/kotu-hero.jpg";
 
 export default function Home() {
   const [destinations, setDestinations] = useState([]);
   const [allDestinations, setAllDestinations] = useState([]);
   const [search, setSearch] = useState("");
+
+  const images = [Ancol, Katedral, Istiqlal, TMII, TMII1, Monas, KotaTua];
 
   window.onload = function () {
     document.getElementById("hero").classList.remove("opacity-0");
@@ -23,8 +32,10 @@ export default function Home() {
   const scrollToWelcome = (event) => {
     event.preventDefault();
     document.getElementById("footer").classList.remove("hidden");
-    document.getElementById("layout").classList.add("lg:pb-[30%]");
+    document.getElementById("layout").classList.add("lg:pb-[20%]");
     document.getElementById("welcome").classList.remove("opacity-0", "hidden");
+    document.getElementById("bottom-image").classList.remove("hidden");
+
     gsap.to(window, {
       duration: 1,
       scrollTo: { y: "#welcome", offsetY: 80 },
@@ -307,6 +318,20 @@ export default function Home() {
         ) : (
           ""
         )}
+      </div>
+
+      <div
+        className="flex flex-nowrap relative overflow-x-scroll space-x-5 mt-12 hidden"
+        id="bottom-image"
+      >
+        {images.map((image, index) => (
+          <div className=" flex-shrink-0 rounded-lg w-64 h-44" key={index}>
+            <img
+              className="rounded-lg object-cover object-center"
+              src={`${image}`}
+            />
+          </div>
+        ))}
       </div>
     </Layout>
   );
