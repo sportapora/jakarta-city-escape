@@ -6,7 +6,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Carousel from "../Components/Carousel.jsx";
 import Ancol from "/assets/ancol.jpeg";
 import Katedral from "/assets/katedral.png";
-import Istiqlal from "/assets/istiqlal.webp";
+import Istiqlal from "/assets/istiqlal.jpg";
 import TMII from "/assets/TMII.jpg";
 import TMII1 from "/assets/TMII1.jpeg";
 import Monas from "/assets/monas.jpg";
