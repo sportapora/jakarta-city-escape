@@ -40,7 +40,7 @@ export default function DestinationDetail() {
           <div className="relative" key={index}>
             <img
               onClick={() => handleGalleryImage(index)}
-              className="h-full max-w-full rounded-lg transition-transform ease-in-out duration-500 hover:-translate-y-2 cursor-pointer"
+              className="h-full object-cover object-center max-w-full rounded-lg transition-transform ease-in-out duration-500 hover:-translate-y-2 cursor-pointer"
               src={`${image}`}
               alt={`${destination.nama}`}
             />
@@ -59,7 +59,7 @@ export default function DestinationDetail() {
       >
         <div className="container text-stone-100 z-[55]">
           <h1 className="text-left hero-title">{destination.nama}</h1>
-          <p className="inline-flex mt-2 tracking-wide">
+          <p className="inline-flex mt-4 tracking-wide">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
